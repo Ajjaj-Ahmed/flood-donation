@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flood donation</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <header class="w-full bg-[#F9F7F3]">
+    <nav class="max-w-screen-xl mx-auto pb-8">
+      <div class="navbar">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+              </svg>
+            </div>
+            <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3  p-2 shadow">
+              <li class="text-xl font-semibold">
+                <h4>Donate Bangladesh</h4>
+              </li>
+              <li><img src="assets/coin.png" alt=""></li>
+            </ul>
+          </div>
+          <a href="index.html" class=" btn bg- text-xl font-semibold">Home</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal flex items-center px-1">
+            <li><img src="assets/logo.png" alt=""></li>
+            <li class="text-xl font-semibold">
+              <h4>Donate Bangladesh</h4>
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-end flex items-center gap-3">
+          <img src="assets/coin.png">
+          <h4 class="text-xl font-semibold"><span id="balance-amount">15000</span><span class="ml-2">BDT</span></h4>
+        </div>
+      </div>
+    </nav>
+  </header>
+ <main class="max-w-screen-xl mx-auto" >
+    <section class="mt-10">
+        <div class="collapse collapse-plus bg-base-200">
+            <input type="radio" name="my-accordion-3" checked="checked" />
+            <div class="collapse-title text-xl font-medium">What is the DOM in JavaScript?</div>
+            <div class="collapse-content">
+              <p>The DOM (Document Object Model) is a programming interface that allows JavaScript to interact with HTML and XML documents as a structured tree of objects.</p>
+            </div>
+          </div>
+          <div class="collapse collapse-plus bg-base-200">
+            <input type="radio" name="my-accordion-3" />
+            <div class="collapse-title text-xl font-medium">How do you select an element by its ID in the DOM?</div>
+            <div class="collapse-content">
+              <p>Use document.getElementById('id') to select an element by its ID.</p>
+            </div>
+          </div>
+          <div class="collapse collapse-plus bg-base-200">
+            <input type="radio" name="my-accordion-3" />
+            <div class="collapse-title text-xl font-medium">What method can you use to change the text content of an element?</div>
+            <div class="collapse-content">
+              <p>You can change the text content of an element by setting the textContent property, like element.textContent = 'New Text';</p>
+            </div>
+          </div>
+          <div class="collapse collapse-plus bg-base-200">
+            <input type="radio" name="my-accordion-3" />
+            <div class="collapse-title text-xl font-medium">How do you add a new element to the DOM?</div>
+            <div class="collapse-content">
+              <p>You can create a new element using document.createElement('tagName'), then append it using parentElement.appendChild(newElement).</p>
+            </div>
+          </div>
+    </section>
+ </main>
+<script src="js/utility.js"></script>
+  <script src="js/donate.js"></script>
+</body>
+
+</html>
