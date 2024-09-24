@@ -1,15 +1,17 @@
 // donation for nowakhali
 
 document.getElementById('donate-nowakhali-btn').addEventListener('click', function () {
-    const modals = document.getElementById('modal')
+
+    const donationAmount = parseFloat(document.getElementById('donation-amount').innerText);
+    const balance = parseFloat(document.getElementById('balance-amount').innerText);
     const donation = giveDonation('donation-input');
-    if (isNaN(donation) || donation < 0) {
+
+    if (isNaN(donation) || donation < 0 || donation > balance) {
         alert('type a valid donation');
         document.getElementById('donation-input').value = '';
         return
     }
-    const donationAmount = parseFloat(document.getElementById('donation-amount').innerText);
-    const balance = parseFloat(document.getElementById('balance-amount').innerText);
+
 
     const area = document.getElementById('donate-nowakhali').innerText;
     // increase the donation
@@ -19,19 +21,13 @@ document.getElementById('donate-nowakhali-btn').addEventListener('click', functi
     const newBalance = balance - donation;
     document.getElementById('balance-amount').innerText = newBalance;
 
+
     // create element for history
-    let currentDate = new Date();
-    const historyElement = document.getElementById('history-section')
-    const div = document.createElement('div')
-    // div.setAttribute('class','p-6')
-    div.innerHTML = `
-    <div class="border-2 border-gray-300 p-4 mb-4 rounded-lg">
-    <h2 class="text-xl font-bold mb-2">${donation} Taka is donate for ${area}</h2> 
-    <h2 class="text-xl font-bold">Date : ${currentDate}</h2>
-    </div>
-    `
-    historyElement.appendChild(div)
+    donationHistory(donation, area)
+
     // modal code
+    const modal = document.getElementById('modal-section')
+    modal.classList.remove('hidden')
     my_modal_4.showModal()
 
     // empty the input
@@ -40,17 +36,20 @@ document.getElementById('donate-nowakhali-btn').addEventListener('click', functi
 
 
 
+
 // donation in feni
 document.getElementById('donate-feni-btn').addEventListener('click', function () {
     const donation = giveDonation('donation-input-feni');
-    if (isNaN(donation) || donation < 0) {
+    const donationAmount = parseFloat(document.getElementById('donation-amount-feni').innerText);
+    const balance = parseFloat(document.getElementById('balance-amount').innerText);
+
+    if (isNaN(donation) || donation < 0 || donation > balance) {
         alert('type a valid donation')
         document.getElementById('donation-input-feni').value = '';
         return
     }
     const area = document.getElementById('donate-feni').innerText
-    const donationAmount = parseFloat(document.getElementById('donation-amount-feni').innerText);
-    const balance = parseFloat(document.getElementById('balance-amount').innerText);
+
     // increase the donation
     const totaldonation = donation + donationAmount;
     document.getElementById('donation-amount-feni').innerText = totaldonation;
@@ -58,18 +57,13 @@ document.getElementById('donate-feni-btn').addEventListener('click', function ()
     const newBalance = balance - donation;
     document.getElementById('balance-amount').innerText = newBalance;
 
+
     // create element for history
-    let currentDate = new Date();
-    const historyElement = document.getElementById('history-section')
-    const div = document.createElement('div')
-    div.innerHTML = `
-    <div class="border-2 border-gray-300 p-4 mb-4 rounded-lg">
-    <h2 class="text-xl font-bold mb-2">${donation} Taka is donate for ${area}</h2>
-    <h2 class="text-xl font-bold">Date : ${currentDate}</h2>
-    </div>
-    `
-    historyElement.appendChild(div)
+    donationHistory(donation, area)
+
     // modal code
+    const modal = document.getElementById('modal-section')
+    modal.classList.remove('hidden')
     my_modal_4.showModal()
 
 
@@ -77,17 +71,23 @@ document.getElementById('donate-feni-btn').addEventListener('click', function ()
     document.getElementById('donation-input-feni').value = '';
 })
 
+
+
 // donation for student
 document.getElementById('donate-student-btn').addEventListener('click', function () {
+
     const donation = giveDonation('donation-input-student');
-    if (isNaN(donation) || donation < 0) {
+    const donationAmount = parseFloat(document.getElementById('donation-amount-student').innerText);
+    const balance = parseFloat(document.getElementById('balance-amount').innerText);
+
+    if (isNaN(donation) || donation < 0 || donation > balance) {
         alert('type a valid donation');
         document.getElementById('donation-input-student').value = '';
         return
     }
+
     const area = document.getElementById('donation-student').innerText
-    const donationAmount = parseFloat(document.getElementById('donation-amount-student').innerText);
-    const balance = parseFloat(document.getElementById('balance-amount').innerText);
+
     // increase the donation
     const totaldonation = donation + donationAmount;
     document.getElementById('donation-amount-student').innerText = totaldonation;
@@ -96,20 +96,12 @@ document.getElementById('donate-student-btn').addEventListener('click', function
     document.getElementById('balance-amount').innerText = newBalance;
 
     // create element for history
-    let currentDate = new Date();
-    const historyElement = document.getElementById('history-section')
-    const div = document.createElement('div')
-    // div.setAttribute('class','p-6')
-    div.innerHTML = `
-        <div class="border-2 border-gray-300 p-4 mb-4 rounded-lg">
-        <h2 class="text-xl font-bold mb-2">${donation} Taka is donate for ${area}</h2> 
-        <h2 class="text-xl font-bold">Date : ${currentDate}</h2>
-        </div>
-        `
-    historyElement.appendChild(div)
+    donationHistory(donation, area)
 
-     // modal code
-     my_modal_4.showModal()
+    // modal code
+    const modal = document.getElementById('modal-section');
+    modal.classList.remove('hidden');
+    my_modal_4.showModal()
 
 
     // empty the input
@@ -141,7 +133,7 @@ document.getElementById('donation-btn').addEventListener('click', function () {
     // again add bg to donation
     document.getElementById('donation-btn').classList.add('bg-[#B4F461]')
 
-    //
+
     // document.getElementById('donation-container').removeAttribute('class', 'hidden');
     const donationcontainer = document.getElementById('donation-container');
     donationcontainer.classList.remove('hidden')
@@ -149,4 +141,20 @@ document.getElementById('donation-btn').addEventListener('click', function () {
     document.getElementById('history-section').classList.add('hidden')
 })
 
-// add hidden class to modal and finish it
+// modal remove after confirmation
+document.getElementById('modal-btn').addEventListener('click', function () {
+    const modal = document.getElementById('modal-section');
+    modal.classList.add('hidden')
+})
+
+
+// scroll bar 
+
+window.addEventListener('scroll', function () {
+    const headerSection = document.getElementById('header-section')
+    if (window.scrollY > 50) {
+        headerSection.classList.add('bg-white/30','backdrop-invert','backdrop-opacity-40')
+    } else {
+        headerSection.classList.remove('bg-white/30')
+    }
+})
